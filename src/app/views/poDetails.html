@@ -1,0 +1,109 @@
+<div layout="column">
+    <section flex class="md-whiteframe-1dp">
+        <md-content class="md-padding" layout="row" layout="column">
+            <div class="table-responsive-vertical">
+
+                <h2 class="md-title">Order Information:</h2>
+                <table id="table" class="table table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <th>PO Number</th>
+                        <th>Partner</th>
+                        <th>Order Date</th>
+                        <th>Division data</th>
+                        <th>Order Type</th>
+                        <th>Partner Code</th>
+                        <th>Ship to Name</th>
+                        <th>Status data</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{selectedPO[0].PONumber}}</td>
+                        <td>{{selectedPO[0].PartnerName}}</td>
+                        <td>{{selectedPO[0].PODate | date:'yyyy-dd-MM'}}</td>
+                        <td>{{selectedPO[0].Division}}</td>
+                        <td>{{selectedPO[0].OrderType}}</td>
+                        <td>{{selectedPO[0].PartnerCode}}</td>
+                        <td>{{selectedPO[0].ShipToName}}</td>
+                        <!--<td>{{selectedPO.POERPStatus}}</td>-->
+                        <td>Pending</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </md-content>
+    </section>
+
+    <br>
+
+    <section flex class="md-whiteframe-1dp">
+        <md-content class="md-padding" layout="row" layout="column">
+            <div class="table-responsive-vertical">
+                <h2 class="md-title">PO Details:</h2>
+                <table id="table3" class="table table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Line</th>
+                        <th>Item Code</th>
+                        <th>Description</th>
+                        <th>Warehouse code</th>
+                        <th>Partner PO Number</th>
+                        <th>Unit of measure</th>
+                        <th>Quantity Ordered</th>
+                        <th>Quantity backordered</th>
+                        <th>Quantity invoiced</th>
+                        <th>Unit Cost</th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    <tr ng-repeat="PO_dt in selectedPO">
+                        <td>{{PO_dt.podetails[0].poheaderId}}</td>
+                        <td>{{PO_dt.podetails[0].ItemCode}}</td>
+                        <td>{{PO_dt.podetails[0].Description}}</td>
+                        <td>{{PO_dt.podetails[0].WarehouseCode}}</td>
+                        <td>{{PO_dt.podetails[0].PartnerPONumber}}</td>
+                        <td>{{PO_dt.podetails[0].UnitofMeasure}}</td>
+                        <td>{{PO_dt.podetails[0].QuantityOrdered}}</td>
+                        <td>{{PO_dt.podetails[0].QuantityBackordered}}</td>
+                        <td>{{PO_dt.podetails[0].QuantityInvoiced}}</td>
+                        <td>{{PO_dt.podetails[0].UnitCost}}</td>
+                        <td>{{PO_dt.podetails[0].Total}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </md-content>
+    </section>
+
+    <div class="md-actions" layout="row" layout-align="start center">
+        <md-button class="md-warn" ng-click="">
+            <div class="md-tile-content">Acknowledge</div>
+            <md-tooltip>
+                Acknowledge and invoice
+            </md-tooltip>
+        </md-button>
+
+        <md-button class="md-warn" ng-click="">
+            <div class="md-tile-content">Cancel</div>
+            <md-tooltip>
+                Request Cancellation
+            </md-tooltip>
+        </md-button>
+        <md-button class="md-warn" ng-click="">
+            <div class="md-tile-content">Change</div>
+            <md-tooltip>
+                Request Changes
+            </md-tooltip>
+        </md-button>
+        <md-button class="md-warn" ng-click="">
+            <div class="md-tile-content">history</div>
+            <md-tooltip>
+                View Change History
+            </md-tooltip>
+        </md-button>
+    </div>
+
+</div>

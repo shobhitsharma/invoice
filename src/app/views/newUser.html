@@ -1,0 +1,109 @@
+<div layout="column" ng-cloak>
+    <md-content layout-padding>
+        <form name="newUserForm">
+
+            <div layout="row">
+                <md-input-container flex="50">
+                    <label>User Name</label>
+                    <input required name="username" ng-model="newUser.username">
+                    <div ng-messages="newUserForm.username.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+
+                </md-input-container>
+                <md-input-container flex="50">
+                    <label>Partner</label>
+                    <input required name="code" ng-model="newUser.code">
+                    <div>multiple Vendor Code separated by commas ; </div>
+                    <div ng-messages="newUserForm.code.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+            </div>
+
+            <div layout="row">
+                <md-input-container flex="50">
+                    <label>Password</label>
+                    <input required type="password" name="password" ng-model="newUser.password">
+                    <div ng-messages="newUserForm.password.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex="50">
+                    <label>Role</label>
+                    <md-select name="type" ng-model="newUser.type" required>
+                        <md-option value="admin">R-pac Admin</md-option>
+                        <md-option value="normal">Partner</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+
+            <md-input-container class="md-block">
+                <label>User Email</label>
+                <input required type="email" name="email" ng-model="newUser.email"
+                       minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/"/>
+                <div ng-messages="newUserForm.email.$error" role="alert">
+                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                        email must be between 10 and 100 characters long and look like an e-mail address.
+                    </div>
+                </div>
+            </md-input-container>
+
+
+            <div>
+                <md-button  ng-click="createUser(newUser)" aria-label=" Create New User">
+                    <md-tooltip>
+                        Create New User
+                    </md-tooltip>
+                    Save
+                </md-button>
+
+            </div>
+
+        </form>
+    </md-content>
+</div>
+
+<!--
+<md-card class="md-whiteframe-9dp" ng-style="{'border-radius': '6px'}" layout-padding layout="row" layout="column">
+    <md-card-content flex layout="column">
+        <md-input-container>
+            <label>User Name</label>
+            <input ng-model="newUsername">
+        </md-input-container>
+
+        <md-input-container>
+            <label>Partner</label>
+            <input ng-model="newUserPartner">
+        </md-input-container>
+
+        <div class="md-actions" layout="row" layout-align="start center">
+            <md-button ng-click="newUser()">
+                <div class="md-tile-content">save</div>
+            </md-button>
+        </div>
+
+    </md-card-content>
+
+    <md-card-content flex layout="column">
+        <md-input-container flex layout="column">
+            <label>Email</label>
+            <input ng-model="newUserEmail">
+        </md-input-container>
+
+        <md-input-container>
+            <label>Password</label>
+            <input ng-model="newUserPassword">
+        </md-input-container>
+
+        <md-select ng-model="role" placeholder="Role" style="max-width: 200px;">
+            <md-option value="admin">R-pac Admin</md-option>
+            <md-option value="normal">Partner</md-option>
+        </md-select>
+    </md-card-content>
+    &lt;!&ndash;
+        <md-card-footer>
+            <md-divider ng-style="{'background': '#E3E3E3'}"></md-divider>
+
+        </md-card-footer>&ndash;&gt;
+</md-card>-->

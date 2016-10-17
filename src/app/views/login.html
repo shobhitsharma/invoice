@@ -1,0 +1,31 @@
+<md-content md-theme="light" class="md-padding" layout-xs="column" layout="row" layout-align="center center">
+
+    <form name="form" role="form">
+        <div class="form-content">
+
+            <h1><span class="fa fa-sign-in"></span> Login Billing Portal</h1>
+
+            <div class="form-group">
+                <input type="text" name="username" required ng-model="user.username"
+                       class="form-control input-underline input-lg" placeholder="User Name">
+                <div ng-show="form.$submitted || form.username.$touched">
+                    <div ng-show="form.username.$error.required">Please enter your user name</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" required ng-model="user.password"
+                       class="form-control input-underline input-lg" placeholder="Password">
+                <div ng-show="form.$submitted || form.password.$touched">
+                    <div ng-show="form.password.$error.required">Please enter your password</div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-white btn-outline btn-lg btn-rounded" ng-click="login(form)">
+          <span class="content">
+          <span>Log in</span>
+          </span>
+        </button>
+        <hr>
+    </form>
+</md-content>

@@ -1,0 +1,96 @@
+{
+  "development": {
+    "username": "portal",
+    "password": "1q2w3e4r",
+    "database": "portal_development",
+    "host": "127.0.0.1",
+    "dialect": "mssql",
+    "dialectOptions": {
+      "instanceName": "SQLEXPRESS"
+    },
+    "timezone": "Europe/Amsterdam",
+    "ftp":{
+      "local":"ftp",
+      "remote":"/",
+      "root":"/POExport",
+      "archive":"/Archive",
+      "interval":900000,
+      "host":"ftp.r-pac.com",
+      "port":21,
+      "user":"rpacnysp",
+      "password":"ku2rRpKb",
+      "pass":"ku2rRpKb",
+      "debug":false
+    },
+    "secret":"r-pacSecret"
+  },
+  "test": {
+    "username": "portal",
+    "password": "1q2w3e4r",
+    "database": "portal_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "timezone": "Europe/Amsterdam",
+    "ftp":{
+      "local":"ftp",
+      "remote":"/",
+      "root":"/POExport",
+      "archive":"/Archive",
+      "interval":900000,
+      "host":"ftp.r-pac.com",
+      "port":21,
+      "user":"rpacnysp",
+      "password":"ku2rRpKb",
+      "pass":"ku2rRpKb",
+      "debug":true
+    },
+    "secret":"r-pacSecret"
+  },
+  "beta": {
+    "username": "",
+    "password": "",
+    "database": "portal_development",
+    "host": "",
+    "dialect": "postgres",
+    "timezone": "Europe/Amsterdam",
+    "ftp":{
+      "local":"ftp",
+      "remote":"/",
+      "root":"/POExport",
+      "archive":"/Archive",
+      "interval":900000,
+      "host":"ftp.r-pac.com",
+      "port":21,
+      "user":"rpacnysp",
+      "password":"ku2rRpKb",
+      "pass":"ku2rRpKb",
+      "debug":false
+    },
+    "secret":"r-pacSecret"
+  },
+  "production": {
+    "username": "",
+    "password": "",
+    "database": "portal_development",
+    "host": "",
+    "dialect": "mssql",
+    "dialectOptions": {
+      "instanceName": "SQLEXPRESS"
+    },
+    "timezone": "Europe/Amsterdam",
+    "ftp":{
+      "local":"ftp",
+      "remote":"/",
+      "root":"/POExport",
+      "archive":"/Archive",
+      "interval":900000,
+      "host":"ftp.r-pac.com",
+      "port":21,
+      "user":"rpacnysp",
+      "password":"ku2rRpKb",
+      "pass":"ku2rRpKb",
+      "debug":false
+    }
+  },
+  "secret":"r-pacSecret"
+}

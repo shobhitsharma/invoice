@@ -1,0 +1,98 @@
+<md-content layout="column" layout-align="center">
+    <div class='md-padding' layout="row" layout-align="start center" flex-offset-sm="0" flex-offset-md="0"
+         flex-offset-lg="0" flex-offset-gt-lg="0" layout-wrap>
+        <md-card class="md-whiteframe-9dp" ng-style="{'border-radius': '6px'}" layout-padding>
+            <md-card-content>
+                <md-input-container>
+                    <label>User Name</label>
+                    <input ng-model="username">
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Partner</label>
+                    <input ng-model="partner">
+                </md-input-container>
+            </md-card-content>
+
+            <md-card-footer>
+                <md-button class="md-icon-button" ng-click="">
+                    <div hide-sm hide-md class="md-tile-content">
+                        <i class="material-icons md-36 left">search</i>
+                    </div>
+                    <md-tooltip>
+                        search for a user
+                    </md-tooltip>
+                </md-button>
+                <md-divider ng-style="{'background': '#E3E3E3'}"></md-divider>
+                <div class="md-actions" layout="row" layout-align="start center">
+                    <md-button ui-sref-active="md-warn" ui-sref="user">
+                        <div class="md-tile-content">New</div>
+                        <md-tooltip>
+                            create new user
+                        </md-tooltip>
+                    </md-button>
+
+                    <md-button ng-click="">
+                        <div class="md-tile-content">Export</div>
+                        <md-tooltip>
+                            export to excel file
+                        </md-tooltip>
+                    </md-button>
+                </div>
+            </md-card-footer>
+        </md-card>
+    </div>
+
+
+    <md-toolbar class="md-table-toolbar md-default" ng-show="!options.rowSelection || !selected.length">
+        <div class="md-toolbar-tools">
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="loadStuff()">
+                <md-icon>refresh</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-table-container>
+        <table data-md-table data-ng-model="selected" md-progress="promise">
+            <thead md-head ng-class="disable-select-all" md-order="query.order">
+            <tr md-row>
+                <th md-column ng-repeat="column in gridUsers">
+                    <span>{{column.name}}</span>
+                </th>
+            </tr>
+            </thead>
+
+            <tbody md-body>
+            <tr md-row md-select="item" md-select-id="name" data-md-on-select="log" md-on-deselect="deselect"
+                x-md-auto-select="options.autoSelect"
+                data-ng-repeat="item in userList | limitTo: query.limit : (query.page - 1) * query.limit">
+                <td md-cell>{{item.username}}</td>
+                <td md-cell>{{item.code}}</td>
+                <td md-cell>{{item.email}}</td>
+                <td md-cell>{{item.type}}</td>
+                <td md-cell>
+
+                    <button class="md-icon-button md-button md-ink-ripple" type="button"
+                            ng-click="" aria-label="edit">
+                        <md-icon class="material-icons">mode_edit</md-icon>
+                        <div class="md-ripple-container"></div>
+                    </button>|
+                    <button class="md-icon-button md-button md-ink-ripple" type="button"
+                            ng-click="" aria-label="delete">
+                        <md-icon class="material-icons">delete</md-icon>
+                        <div class="md-ripple-container"></div>
+                    </button>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+
+    <data-md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page"
+                              md-total="{{userList.length}}" md-on-paginate="onPaginate"
+                              md-page-select="options.pageSelect"
+                              md-boundary-links="options.boundaryLinks"></data-md-table-pagination>
+
+</md-content>

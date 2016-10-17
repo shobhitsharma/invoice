@@ -1,0 +1,61 @@
+<!-- src/dashboard.ejs -->
+<!doctype html>
+<html ng-app='portal'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.css">
+
+    <link rel="stylesheet" href="/public/stylesheets/style.css">
+
+    <title>billing portal</title>
+
+    <style>
+        body 		{ padding-top:80px; }
+    </style>
+
+    <script>
+        window.location.hash = '';
+    </script>
+
+</head>
+<body>
+
+<div class="container">
+    <div ui-view></div>
+</div>
+
+
+<!-- Vendor: Javascripts -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+        crossorigin="anonymous"></script>
+
+<!-- Angular Material Dependencies -->
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-touch.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
+<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.3.3.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-sanitize.js"></script>
+
+
+<script src="/public/common/angular-ui-grid/ui-grid.min.js"></script>
+
+<!-- Core -->
+<script src="/public/core.js"></script>
+<!-- Controller -->
+<script src='/public/models/services.js'></script>
+<!--models-->
+<script src="/public/controller/controller.js"></script>
+
+</body>
+</html>

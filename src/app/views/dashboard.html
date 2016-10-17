@@ -1,0 +1,99 @@
+<md-content md-theme="light" class="md-padding" layout-xs="column" layout="row">
+
+    <md-card flex md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch layout="row" layout-wrap
+             layout-padding>
+        <div flex="30">
+            <md-select placeholder="Partner" ng-model="user" md-on-open="loadUsers()" style="min-width: 200px;">
+                <md-option ng-value="user" ng-repeat="user in users">{{user.name}}</md-option>
+            </md-select>
+            <!--<p class="md-caption">selected customer: {{ user ? user.name : 'No one yet' }}</p>-->
+
+            <md-input-container>
+                <label>PO Number</label>
+                <input ng-model="user.PONumber">
+            </md-input-container>
+
+            <md-select ng-model="status" placeholder="Status" style="min-width: 200px;">
+                <md-option ng-repeat="st in POStatus" value="{{st.val}}">{{st.str}}</md-option>
+            </md-select>
+
+            <md-select ng-model="range" placeholder="Select PO Date range" style="min-width: 200px;">
+                <md-option ng-repeat="date in dateRange" value="{{date.val}}">{{date.str}}</md-option>
+            </md-select>
+
+            <md-button class="md-raised" ng-click="loadPOHeader({PONumber:user.PONumber,dateRange:range})">run
+            </md-button>
+
+        </div>
+    </md-card>
+    <md-card flex="30" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch layout-margin>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">My PO Summary:</span>
+                <span class="md-subhead">Pending: {{posHeader.length}} </span>
+                <span class="md-subhead">Accepted: 0</span>
+                <span class="md-subhead">Invoiced: 0</span>
+                <span class="md-subhead">Rejected: 0</span>
+                <span class="md-subhead">UnderReview: 0</span>
+
+                <!--
+                <span class="md-subhead" ng-repeat="st in POStatus">{{st.str}}:</span>-->
+            </md-card-title-text>
+        </md-card-title>
+    </md-card>
+</md-content>
+
+
+<md-toolbar class="md-table-toolbar md-default">
+    <div class="md-toolbar-tools">
+        <span>My POs</span>
+        <div flex></div>
+        <md-button class="md-icon-button" ng-click="loadStuff()">
+            <md-icon>refresh</md-icon>
+        </md-button>
+
+        <md-button class="md-icon-button" ui-sref="details">
+            <md-icon>filter_list</md-icon>
+        </md-button>
+
+    </div>
+</md-toolbar>
+
+<md-table-container>
+    <table data-md-table data-md-row-select="options.rowSelection" multiple="{{options.multiSelect}}"
+           ng-model="selected" md-progress="promise">
+
+        <thead md-head md-order="query.order" md-on-reorder="logOrder">
+        <tr md-row>
+            <th md-column ng-repeat="column in columns">
+                <span>{{column.name}}</span>
+            </th>
+        </tr>
+        </thead>
+
+        <tbody md-body>
+
+        <!--<tr md-row md-select="item" md-on-select="logItem" md-auto-select="options.autoSelect"
+            ng-repeat="item in posHeader| limitTo: query.limit : (query.page - 1) * query.limit">
+        -->
+        <tr md-row md-select="item" md-on-select="logItem" md-auto-select="options.autoSelect"
+            ng-repeat="item in posHeader | limitTo: query.limit : (query.page - 1) * query.limit ">
+            <td md-cell>{{item.PONumber}}</td>
+            <td md-cell width="80%">{{item.PartnerName}}</td>
+            <td md-cell width="100%">{{item.PODate | date:'yyyy-dd-MM'}}</td>
+            <td md-cell>{{item.Division}}</td>
+            <td md-cell>{{item.OrderType}}</td>
+            <td md-cell>{{item.PartnerCode}}</td>
+            <td md-cell width="100%">{{item.ShipToName}}</td>
+            <!--<td>{{item.POERPStatus}}</td>-->
+            <td>Pending</td>
+        </tr>
+        </tbody>
+    </table>
+</md-table-container>
+
+
+<data-md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page"
+                          md-total="{{posHeader.length}}" md-on-paginate="onPaginate"
+                          md-page-select="options.pageSelect"
+                          md-boundary-links="options.boundaryLinks"></data-md-table-pagination>
